@@ -23,6 +23,7 @@ export function FloatingField({
   inputMode,
   error,
   onBlur,
+  trailing,
 }: {
   label: string;
   value: string;
@@ -34,6 +35,8 @@ export function FloatingField({
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
   error?: string;
   onBlur?: () => void;
+  /** Optionales Element am rechten Feldrand (z. B. Passwort-Toggle). */
+  trailing?: React.ReactNode;
 }) {
   const id = useId();
   const [focused, setFocused] = useState(false);
@@ -64,6 +67,7 @@ export function FloatingField({
           aria-describedby={error ? errorId : undefined}
           className={[
             "peer h-12 w-full rounded-xl border bg-paper px-3.5 pb-1.5 pt-5",
+            trailing ? "pr-11" : "",
             "font-body text-[0.95rem] text-ink outline-none transition-colors duration-200",
             error
               ? "border-danger focus:border-danger"
@@ -95,6 +99,13 @@ export function FloatingField({
             {required && <span aria-hidden="true"> *</span>}
           </span>
         </label>
+
+        {/* Optionales Element am rechten Rand (z. B. Passwort-Toggle) */}
+        {trailing && (
+          <div className="absolute right-2 top-1/2 -translate-y-1/2">
+            {trailing}
+          </div>
+        )}
       </div>
 
       {/* Validierungs-Hinweis */}
