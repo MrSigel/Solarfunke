@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * =============================================================
+ *  Solarfunke – Design-Tokens
+ * =============================================================
+ *  Zentrale Stelle für Farben & Basiswerte. Alles Weitere (Tailwind-
+ *  Utilities) greift über tailwind.config.ts auf diese Variablen zu.
+ *
+ *  FARBREGEL:
+ *    Große Flächen  -> WEISS (--paper) oder GRÜN (--forest)
+ *    GELB (--accent) -> nur Akzent (aktiv, Buttons, Highlights, Blob)
+ * =============================================================
+ */
+:root {
+  /* --- Marken-Grundfarben --- */
+  --paper: #ffffff; /* Weiß – Basis-Hintergrund, große helle Flächen */
+  --paper-sunk: #f5f7f4; /* dezent abgesetzte helle Fläche */
+
+  --forest: #02462e; /* Grün – große/dunkle Flächen */
+  --forest-hover: #063d29; /* Hover auf grünen interaktiven Flächen */
+  --forest-soft: #0b5238; /* leicht aufgehellte grüne Nuance */
+
+  --accent: #fec700; /* Gelb – Akzentfarbe (Buttons, aktiv, Highlights) */
+  --accent-hover: #ecb800;
+  --accent-ink: #02462e; /* Text auf gelber Fläche (dunkelgrün, guter Kontrast) */
+
+  --nav-blob: #02462e; /* Nav-Blob/Pill hinter aktivem/gehovertem Punkt (Grün) */
+
+  /* --- Text --- */
+  --ink: #12211a; /* Haupttext auf hellem Grund (grünstichiges Fast-Schwarz) */
+  --ink-soft: #47584f; /* Sekundärtext */
+  --on-forest: #f4faf6; /* Text auf grüner Fläche */
+
+  /* --- Linien --- */
+  --line: #e3e8e3; /* Hairline auf hellem Grund */
+  --line-forest: rgba(244, 250, 246, 0.16); /* Hairline auf grünem Grund */
+
+  /* --- Funktionsfarbe --- */
+  --danger: #b4331f; /* dezentes Backstein-Rot – nur für Validierungs-Hinweise */
+
+  /* --- Layout-Tokens --- */
+  --header-h: 5.5rem; /* Nav-Höhe (voll, Scrollposition 0) */
+  --header-h-scrolled: 4rem; /* Nav-Höhe (kompakt, gescrollt) */
+
+  /* --- Header-Optik (frosted glass, zentral anpassbar) --- */
+  --nav-bg: 255, 255, 255; /* Header-Grundfarbe (RGB): Weiß */
+  --nav-bg-opacity: 0.8; /* Deckkraft oben (0–1) – Foto schimmert dezent durch */
+  --nav-bg-opacity-scrolled: 0.9; /* etwas deckender im gescrollten Zustand */
+  --nav-blur: 12px; /* Stärke des Backdrop-Blur (frosted glass) */
+
+  /* --- Logo-Höhen (zentral steuerbar) --- */
+  --logo-h: 2.25rem; /* volle Höhe (Scrollposition 0) */
+  --logo-h-scrolled: 1.6rem; /* geschrumpfte Höhe (gescrollt) */
+  --logo-h-mobile: 1.9rem; /* Höhe im mobilen Header */
+
+  /* --- Hero-Hintergrundbild (zentral feinjustierbar) --- */
+  --hero-min-h: 54rem; /* Mindesthöhe der Hero-Fläche (Desktop) – so hoch, dass
+                          der höhere Schritt 1 des Formulars hineinpasst; dadurch
+                          bleibt der Hero konstant und nur das Formular wird auf
+                          Schritt 2 kürzer (kein Springen der Hero-Höhe). */
+  --hero-overlay: 0.82; /* Overlay-Stärke (0–1) – skaliert den grünen Verlauf */
+  --hero-pos-desktop: 12% 45%; /* Bildausschnitt Desktop – nach LINKS geschoben
+                                  (Familie/Haus links, ruhiger Bereich rechts) */
+  --hero-pos-mobile: 50% 22%; /* Bildausschnitt Mobil */
+  --hero-img-h-mobile: 20rem; /* Höhe des Bildbandes im mobilen Layout */
+  --hero-form-w: 25rem; /* Breite der Formular-Karte auf Desktop (schmal, rechts) */
+}
+
+/* Font-Fallbacks werden über next/font gesetzt (--font-display / --font-body). */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    text-wrap: balance; /* keine unnötigen erzwungenen Umbrüche */
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Sichtbarer, markenkonformer Keyboard-Focus (kein Default-Blau) */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Sektionen bekommen Scroll-Offset, damit die sticky Nav nicht überdeckt */
+  section[id] {
+    scroll-margin-top: var(--header-h);
+  }
+}
+
+/* Bewegung respektiert Nutzer-Einstellung */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/*
+ * Wizard-Animationen (Schritt-/Fragenübergänge).
+ * Werden über Tailwind-Arbitrary-Utilities genutzt, z. B.
+ *   animate-[slideInRight_0.35s_ease-out]
+ * prefers-reduced-motion oben neutralisiert die Dauer automatisch.
+ */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
