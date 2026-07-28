@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import type { Lead } from "@/lib/lead";
+import { isValidEmail, type Lead } from "@/lib/lead";
+import { sendMail } from "@/lib/mailer";
+import { buildConfirmationEmail } from "@/lib/emails/confirmation";
 
 /**
  * POST /api/leads
@@ -75,6 +77,22 @@ export async function POST(request: Request) {
       { ok: false, error: "insert-failed", status: res.status },
       { status: 502 },
     );
+  }
+
+  // Lead ist gespeichert. Danach: Bestätigungsmail an den Kunden (best effort).
+  // Ein Mailfehler darf den Lead NICHT gefährden – nur serverseitig loggen.
+  if (lead.email && isValidEmail(lead.email)) {
+    try {
+      const { subject, html, text } = buildConfirmationEmail({
+        vorname: lead.vorname,
+      });
+      const mail = await sendMail({ to: lead.email, subject, html, text });
+      if (!mail.ok) {
+        console.error("[Solarfunke] Bestätigungsmail nicht gesendet:", mail.error);
+      }
+    } catch (error) {
+      console.error("[Solarfunke] Bestätigungsmail-Fehler:", error);
+    }
   }
 
   return NextResponse.json({ ok: true });
