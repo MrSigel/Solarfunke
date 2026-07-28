@@ -99,8 +99,8 @@ export function ExitIntentBanner() {
           Sichern Sie sich Ihr kostenloses Angebot
         </h2>
         <p className="mx-auto mt-4 max-w-prose text-ink-soft">
-          In nur zwei Minuten zur unverbindlichen Anfrage – wir melden uns mit
-          einer konkreten Einschätzung.
+          In nur zwei Minuten zur unverbindlichen Anfrage – ein passender
+          Fachbetrieb meldet sich mit einer konkreten Einschätzung.
         </p>
 
         <button

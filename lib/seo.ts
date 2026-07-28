@@ -28,7 +28,7 @@ export const organizationJsonLd: Record<string, unknown> = {
       logo: `${SITE_URL}/logo/solarfunke-nav.png`,
       image: `${SITE_URL}/hero/hero-desktop.jpg`,
       description:
-        "Solarfunke vermittelt Photovoltaik-Anlagen: unverbindliche Anfrage, kostenlose Beratung, transparentes Angebot und Förder-Check.",
+        "Solarfunke bringt Interessenten mit geprüften Photovoltaik-Fachbetrieben in ihrer Region zusammen – unverbindliche Anfrage, kostenlos. Beratung, Angebot und Installation übernehmen die Fachbetriebe.",
       email: "kontakt@klickhafen.com",
       telephone: "+4915563535989",
       areaServed: "DE",

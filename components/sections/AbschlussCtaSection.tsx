@@ -31,7 +31,8 @@ export function AbschlussCtaSection({ section }: { section: SectionDef }) {
               Bereit für Ihre eigene Solaranlage?
             </h2>
             <p className="mt-5 text-lg text-on-forest/80">
-              Starten Sie jetzt Ihre unverbindliche Anfrage – in nur zwei Minuten.
+              Starten Sie jetzt Ihre unverbindliche Anfrage – wir vermitteln
+              Ihnen einen passenden Fachbetrieb aus Ihrer Region.
             </p>
             <div className="mt-9">
               <ScrollToHeroButton label="Anfrage starten" />

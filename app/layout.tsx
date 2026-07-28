@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CookieBanner } from "@/components/banners/CookieBanner";
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Solarfunke",
   },
   description:
-    "Ihre Photovoltaik-Anlage einfach anfragen: In zwei Minuten zur unverbindlichen Anfrage – kostenlose Beratung, transparentes Angebot und Förder-Check. 4,8 von 5 Sternen bei über 300 Google-Bewertungen.",
+    "Solarfunke vermittelt Ihnen kostenlos und unverbindlich einen geprüften Photovoltaik-Fachbetrieb aus Ihrer Region. In zwei Minuten zur Anfrage. 4,8 von 5 Sternen bei über 300 Google-Bewertungen.",
   keywords: [
     "Photovoltaik",
     "Solaranlage",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     siteName: "Solarfunke",
     title: "Solarfunke – Photovoltaik-Anlagen einfach anfragen",
     description:
-      "In zwei Minuten zur unverbindlichen Photovoltaik-Anfrage – kostenlose Beratung, transparentes Angebot, Förder-Check. 4,8 von 5 Sternen bei über 300 Google-Bewertungen.",
+      "Solarfunke vermittelt Ihnen kostenlos und unverbindlich einen geprüften Photovoltaik-Fachbetrieb aus Ihrer Region. 4,8 von 5 Sternen bei über 300 Google-Bewertungen.",
     images: [
       {
         url: "/hero/hero-desktop.jpg",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Solarfunke – Photovoltaik-Anlagen einfach anfragen",
     description:
-      "In zwei Minuten zur unverbindlichen Photovoltaik-Anfrage. 4,8 von 5 Sternen bei über 300 Google-Bewertungen.",
+      "Kostenlos & unverbindlich einen geprüften PV-Fachbetrieb aus Ihrer Region vermittelt bekommen. 4,8 von 5 Sternen bei über 300 Google-Bewertungen.",
     images: ["/hero/hero-desktop.jpg"],
   },
   robots: {
@@ -84,6 +84,11 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#02462e",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

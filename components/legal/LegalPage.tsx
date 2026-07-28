@@ -46,8 +46,8 @@ export function LegalPage({
       {/* Inhalt in Lesebreite */}
       <main className="bg-paper">
         <article className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24">
-          <h1 className="text-h1 text-ink">{title}</h1>
-          <div className="mt-8 space-y-5 text-ink-soft [&_a]:font-medium [&_a]:text-forest [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-10 [&_h2]:text-h2 [&_h2]:font-semibold [&_h2]:text-ink [&_li]:leading-relaxed [&_strong]:text-ink [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-6">
+          <h1 className="text-h1 hyphens-auto break-words text-ink">{title}</h1>
+          <div className="mt-8 space-y-5 hyphens-auto break-words text-ink-soft [&_a]:font-medium [&_a]:text-forest [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-10 [&_h2]:text-h2 [&_h2]:font-semibold [&_h2]:text-ink [&_li]:leading-relaxed [&_strong]:text-ink [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-6">
             {children}
           </div>
         </article>

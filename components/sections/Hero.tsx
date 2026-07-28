@@ -50,9 +50,10 @@ function HeroCopy() {
         Ihre Solaranlage beginnt mit einer unverbindlichen Anfrage
       </h1>
       <p className="mt-5 max-w-prose text-lg text-white/90">
-        In zwei kurzen Schritten zum passenden Angebot: Sie beantworten ein paar
-        Fragen zu Ihrem Vorhaben, wir melden uns mit einer konkreten
-        Einschätzung. Kostenlos und ohne Verpflichtung.
+        In zwei kurzen Schritten zum passenden Fachbetrieb: Sie beantworten ein
+        paar Fragen zu Ihrem Vorhaben, wir vermitteln Ihnen einen geprüften
+        Fachbetrieb aus Ihrer Region, der sich mit einer konkreten Einschätzung
+        meldet. Kostenlos und ohne Verpflichtung.
       </p>
     </>
   );
@@ -102,10 +103,10 @@ export function Hero() {
 
       {/* ============ MOBIL: Bildband oben mit Titel ============ */}
       <div className="relative lg:hidden">
-        <div
-          className="relative w-full"
-          style={{ height: "var(--hero-img-h-mobile)" }}
-        >
+        {/* Band mit Mindesthöhe: Bild als absoluter Hintergrund, Titel im
+            normalen Fluss darüber. So startet der Text sicher UNTER der
+            fixierten Nav und wird nie überdeckt; das Band wächst mit dem Text. */}
+        <div className="relative w-full min-h-[var(--hero-img-h-mobile)]">
           <Image
             src="/hero/hero-mobile.jpg"
             alt="Familie vor ihrem Haus mit Photovoltaik-Anlage"
@@ -120,8 +121,8 @@ export function Hero() {
             className="absolute inset-0"
             style={{ backgroundImage: OVERLAY_MOBILE }}
           />
-          {/* Titel/Beschreibung über dem Bild (unten ausgerichtet, gut lesbar) */}
-          <Container className="absolute inset-0 flex flex-col justify-end pb-6 pt-[calc(var(--header-h)+1rem)]">
+          {/* Titel/Beschreibung im Fluss (relative), mit Abstand zur Nav */}
+          <Container className="relative pb-10 pt-[calc(var(--header-h)+1.5rem)]">
             <HeroCopy />
           </Container>
         </div>

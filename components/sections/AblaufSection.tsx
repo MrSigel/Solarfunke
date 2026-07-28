@@ -37,13 +37,13 @@ const STEPS: Step[] = [
   {
     title: "Kostenlose Beratung & Angebot",
     description:
-      "Wir beraten Sie individuell und erstellen ein transparentes, auf Sie zugeschnittenes Angebot.",
+      "Ein passender Fachbetrieb aus Ihrer Region berät Sie individuell und erstellt ein transparentes, auf Sie zugeschnittenes Angebot.",
     icon: Handshake,
   },
   {
     title: "Installation",
     description:
-      "Unsere Fachpartner montieren Ihre Anlage und nehmen sie fachgerecht in Betrieb.",
+      "Bei Beauftragung übernimmt der regionale Fachbetrieb Montage und Inbetriebnahme Ihrer Anlage.",
     icon: Wrench,
   },
 ];
@@ -92,7 +92,7 @@ export function AblaufSection({ section }: { section: SectionDef }) {
             In drei Schritten zur eigenen Solaranlage
           </h2>
           <p className="mt-5 text-lg text-on-forest/80">
-            Von der ersten Anfrage bis zur fertigen Anlage begleiten wir Sie –
+            So bringt Solarfunke Sie mit einem passenden Fachbetrieb zusammen –
             klar strukturiert und ohne Umwege.
           </p>
         </div>

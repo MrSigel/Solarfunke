@@ -27,8 +27,9 @@ export default function DankePage() {
         <h1 className="text-h1 text-on-forest">Vielen Dank!</h1>
 
         <p className="mx-auto mt-6 max-w-prose text-lg text-on-forest/80">
-          Ihre Anfrage ist bei uns eingegangen – wir melden uns in Kürze bei
-          Ihnen. Vielen Dank für Ihr Interesse an Solarfunke.
+          Ihre Anfrage ist bei uns eingegangen. Wir bringen Sie mit einem
+          passenden Fachbetrieb aus Ihrer Region zusammen, der sich in Kürze bei
+          Ihnen meldet. Vielen Dank für Ihr Interesse an Solarfunke.
         </p>
 
         <Link

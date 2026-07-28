@@ -32,7 +32,7 @@ export function MiniLeadBlock({
   source,
   eyebrow = "Kurz & unverbindlich",
   heading = "Mehr Informationen erhalten",
-  description = "Telefon und E-Mail genügen – wir melden uns mit den Details.",
+  description = "Telefon und E-Mail genügen – ein passender Fachbetrieb meldet sich mit den Details.",
 }: {
   source: LeadSource;
   eyebrow?: string;

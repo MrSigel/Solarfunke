@@ -42,7 +42,7 @@ const VORTEILE: Vorteil[] = [
   {
     title: "Attraktive Förderungen",
     description:
-      "Profitieren Sie von attraktiven Förderprogrammen – wir prüfen die passenden für Sie.",
+      "Profitieren Sie von attraktiven Förderprogrammen – der vermittelte Fachbetrieb prüft die passenden für Sie.",
     icon: BadgeEuro,
   },
   {
@@ -87,7 +87,8 @@ export function VorteileSection({ section }: { section: SectionDef }) {
             Gute Gründe für Ihre Solaranlage
           </h2>
           <p className="mt-5 text-lg text-ink-soft">
-            Diese Vorteile sprechen für eine Photovoltaik-Anlage mit Solarfunke.
+            Diese Vorteile sprechen für eine eigene Photovoltaik-Anlage – den
+            passenden Fachbetrieb dafür vermittelt Solarfunke.
           </p>
         </div>
 

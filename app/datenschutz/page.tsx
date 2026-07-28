@@ -99,14 +99,19 @@ export default function DatenschutzPage() {
         Aufbewahrungspflichten entgegenstehen.
       </p>
 
-      <h2>7. Weitergabe und Auftragsverarbeiter</h2>
+      <h2>7. Weitergabe an Fachbetriebe und Auftragsverarbeiter</h2>
       <p>
-        Eine Übermittlung Ihrer Daten an Dritte erfolgt nur, soweit dies zur
-        Bearbeitung Ihrer Anfrage erforderlich ist oder Sie eingewilligt haben.
-        Zur Verwaltung von Anfragen setzen wir gegebenenfalls einen externen
-        Dienstleister (CRM) ein; mit diesem sowie mit unserem Hoster bestehen –
+        Solarfunke ist ein Vermittler: Wir bringen Sie mit einem passenden
+        Fachbetrieb aus Ihrer Region zusammen. Zur Bearbeitung Ihrer Anfrage
+        übermitteln wir die von Ihnen angegebenen Daten daher an einen
+        geeigneten Fachbetrieb, der Sie anschließend berät und Ihnen ein Angebot
+        erstellt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. a DSGVO.
+      </p>
+      <p>
+        Zur Verwaltung von Anfragen setzen wir zudem einen externen Dienstleister
+        (CRM/Datenbank) ein; mit diesem sowie mit unserem Hoster bestehen –
         soweit erforderlich – Verträge zur Auftragsverarbeitung nach Art. 28
-        DSGVO.
+        DSGVO. Eine darüber hinausgehende Weitergabe an Dritte erfolgt nicht.
       </p>
 
       <h2>8. Ihre Rechte</h2>
