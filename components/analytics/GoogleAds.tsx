@@ -47,6 +47,19 @@ export function GoogleAds() {
           } catch (e) {}
 
           gtag('config', '${GADS_ID}');
+
+          // Google-Ads Conversion-Helfer (verzögerte Navigation): feuert die
+          // "Kontakt"-Conversion und öffnet danach die übergebene URL.
+          window.gtagSendEvent = function(url) {
+            var callback = function () {
+              if (typeof url === 'string') { window.location = url; }
+            };
+            gtag('event', 'ads_conversion_Kontakt_1', {
+              'event_callback': callback,
+              'event_timeout': 2000
+            });
+            return false;
+          };
         `}
       </Script>
     </>

@@ -12,6 +12,7 @@ import {
   submitLead,
   type LeadSource,
 } from "@/lib/lead";
+import { trackKontaktConversion } from "@/lib/consent";
 
 /**
  * Wiederverwendbarer, kompakter Mini-Lead-Block (Telefon + E-Mail).
@@ -77,7 +78,8 @@ export function MiniLeadBlock({
     const result = await submitLead(lead);
 
     if (result.ok) {
-      router.push("/danke");
+      // Google-Ads "Kontakt"-Conversion feuern, dann zur Danke-Seite.
+      trackKontaktConversion(() => router.push("/danke"));
     } else {
       setSubmitting(false);
       setFormError(result.error ?? "Beim Senden ist ein Fehler aufgetreten.");

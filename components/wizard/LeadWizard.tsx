@@ -25,6 +25,7 @@ import {
   type LeadStep1,
   type LeadStep2,
 } from "@/lib/lead";
+import { trackKontaktConversion } from "@/lib/consent";
 
 /* -------------------------------------------------------------------------
  *  Konfiguration – Fragen & Felder (Texte später leicht ersetzbar)
@@ -164,8 +165,8 @@ export function LeadWizard() {
     const result = await submitLead(lead);
 
     if (result.ok) {
-      // Nach erfolgreichem Absenden zur Danke-Seite.
-      router.push("/danke");
+      // Google-Ads "Kontakt"-Conversion feuern, dann zur Danke-Seite.
+      trackKontaktConversion(() => router.push("/danke"));
     } else {
       setSubmitting(false);
       setFormError(result.error ?? "Beim Senden ist ein Fehler aufgetreten.");
