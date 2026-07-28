@@ -22,7 +22,7 @@ export function OptionButton({
       onClick={onClick}
       aria-pressed={selected}
       className={[
-        "group flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5 text-left",
+        "group flex min-h-[2.875rem] items-center justify-between gap-2 rounded-xl border px-3.5 py-2.5 text-left",
         "font-body text-[0.95rem] transition-all duration-200 ease-smooth",
         "hover:-translate-y-0.5 focus-visible:-translate-y-0.5",
         selected
@@ -30,7 +30,7 @@ export function OptionButton({
           : "border-line bg-paper text-ink hover:border-forest hover:bg-paper-sunk",
       ].join(" ")}
     >
-      <span className="font-medium">{label}</span>
+      <span className="min-w-0 truncate font-medium">{label}</span>
       <span
         aria-hidden="true"
         className={[
