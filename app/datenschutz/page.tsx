@@ -40,7 +40,7 @@ export default function DatenschutzPage() {
         <br />
         Deutschland
         <br />
-        E-Mail: kontakt@klickhafen.com
+        E-Mail: kontakt@solarfunke.de
         <br />
         Telefon: +49 1556 3535989
       </p>

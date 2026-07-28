@@ -32,7 +32,7 @@ export default function ImpressumPage() {
       <p>
         Telefon / WhatsApp: +49 1556 3535989
         <br />
-        E-Mail: kontakt@klickhafen.com
+        E-Mail: kontakt@solarfunke.de
       </p>
 
       <h2>Umsatzsteuer</h2>

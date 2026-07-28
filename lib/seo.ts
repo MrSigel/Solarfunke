@@ -29,7 +29,7 @@ export const organizationJsonLd: Record<string, unknown> = {
       image: `${SITE_URL}/hero/hero-desktop.jpg`,
       description:
         "Solarfunke bringt Interessenten mit geprüften Photovoltaik-Fachbetrieben in ihrer Region zusammen – unverbindliche Anfrage, kostenlos. Beratung, Angebot und Installation übernehmen die Fachbetriebe.",
-      email: "kontakt@klickhafen.com",
+      email: "kontakt@solarfunke.de",
       telephone: "+4915563535989",
       areaServed: "DE",
       address: {
@@ -43,7 +43,7 @@ export const organizationJsonLd: Record<string, unknown> = {
         "@type": "ContactPoint",
         contactType: "customer service",
         telephone: "+4915563535989",
-        email: "kontakt@klickhafen.com",
+        email: "kontakt@solarfunke.de",
         availableLanguage: ["de"],
       },
       aggregateRating: {
