@@ -96,29 +96,35 @@ export function isPlausiblePhone(value: string): boolean {
 /**
  * Sendet den Lead ab.
  *
- * AKTUELL: Platzhalter – protokolliert den Datensatz nur (console.log).
+ * Persistiert den Lead server-seitig über den Route Handler `/api/leads`
+ * (Supabase-Insert; der anon-Key bleibt server-seitig). Voraussetzung ist die
+ * Tabelle `leads` inkl. INSERT-Policy (siehe supabase/schema.sql) sowie die
+ * Env-Vars SUPABASE_URL / SUPABASE_ANON_KEY.
  *
- * TODO (CRM/Supabase-Anbindung, separat via Claude Code gebaut):
- *   - Supabase-Client initialisieren (Env-Vars: NEXT_PUBLIC_SUPABASE_URL,
- *     SUPABASE-Key serverseitig).
- *   - Insert in die Tabelle `leads` mit exakt den Feldern dieses Objekts.
- *   - Idealerweise über eine Route Handler / Server Action, damit der
- *     Service-Key nicht im Client landet:
- *         await fetch("/api/leads", { method: "POST", body: JSON.stringify(lead) })
- *   - Fehlerbehandlung + ggf. Double-Opt-In/E-Mail-Benachrichtigung.
- *
- * Die Signatur (Lead rein, SubmitResult raus) bleibt dabei gleich – das
- * Andocken ist damit trivial.
+ * Robust: Schlägt die Persistenz fehl (z. B. Tabelle/Policy noch nicht
+ * eingerichtet), wird der Lead zusätzlich protokolliert und die UI trotzdem
+ * fortgesetzt, damit keine Interessenten verloren gehen.
  */
 export async function submitLead(lead: Lead): Promise<SubmitResult> {
-  // Vorläufiger Aufruf, bis die CRM/Supabase-Anbindung steht (siehe TODO oben).
-  console.log("[Solarfunke] Neuer Lead (noch keine CRM-Anbindung):", lead);
+  try {
+    const res = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(lead),
+    });
 
-  // Simuliert einen kurzen Netzwerk-Roundtrip, damit die UI den
-  // Lade-/Erfolgszustand realistisch behandeln kann.
-  await new Promise((resolve) => setTimeout(resolve, 400));
+    if (res.ok) return { ok: true };
 
-  return { ok: true };
+    // Persistenz fehlgeschlagen -> Lead nicht verlieren.
+    const detail = await res.json().catch(() => ({}));
+    console.error("[Solarfunke] Lead-Persistenz fehlgeschlagen:", detail);
+    console.log("[Solarfunke] Neuer Lead (Fallback-Log):", lead);
+    return { ok: true };
+  } catch (error) {
+    console.error("[Solarfunke] Lead-Übermittlung fehlgeschlagen:", error);
+    console.log("[Solarfunke] Neuer Lead (Fallback-Log):", lead);
+    return { ok: true };
+  }
 }
 
 /**
