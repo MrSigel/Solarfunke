@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CookieBanner } from "@/components/banners/CookieBanner";
+import { GoogleAds } from "@/components/analytics/GoogleAds";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd } from "@/lib/seo";
 
@@ -102,6 +103,8 @@ export default function RootLayout({
       className={`${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable}`}
     >
       <body>
+        {/* Google Ads (gtag.js) mit Consent Mode – site-weit */}
+        <GoogleAds />
         {/* Structured Data (Organization + WebSite) site-weit */}
         <JsonLd data={organizationJsonLd} />
         {children}

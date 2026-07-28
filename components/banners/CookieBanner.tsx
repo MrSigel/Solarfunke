@@ -3,18 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cookie } from "lucide-react";
+import { CONSENT_KEY, updateAdsConsent } from "@/lib/consent";
 
 /**
  * Cookie-Consent-Banner (dezenter Balken unten, nicht blockierend).
  *
- * Datenschutzfreundlich: Standardmäßig sind nur notwendige Cookies aktiv.
- * Die Auswahl wird in localStorage gespeichert und der Banner erscheint danach
- * nicht erneut.
- *
- * TODO: Sobald echtes Tracking/Analytics eingebunden wird, dieses erst nach
- * "Alle akzeptieren" laden (die Entscheidung liegt unter dem Key CONSENT_KEY).
+ * Datenschutzfreundlich: Standardmäßig sind nur notwendige Cookies aktiv
+ * (Google Consent Mode startet auf „denied"). Die Auswahl wird in localStorage
+ * gespeichert und aktualisiert den Google-Ads-Consent live. Der Banner
+ * erscheint danach nicht erneut.
  */
-const CONSENT_KEY = "solarfunke-cookie-consent"; // "accepted" | "necessary"
 
 export function CookieBanner() {
   // Erst nach dem Mount rendern (kein SSR/Hydration-Mismatch durch localStorage).
@@ -35,6 +33,8 @@ export function CookieBanner() {
     } catch {
       /* Speicherung nicht möglich – Banner trotzdem schließen. */
     }
+    // Google Ads Consent Mode live nachziehen.
+    updateAdsConsent(choice === "accepted");
     setVisible(false);
   }
 
