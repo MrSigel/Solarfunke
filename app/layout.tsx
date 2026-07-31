@@ -3,6 +3,7 @@ import { Space_Grotesk, Hanken_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css";
 import { CookieBanner } from "@/components/banners/CookieBanner";
 import { GoogleAds } from "@/components/analytics/GoogleAds";
+import { HubSpot } from "@/components/analytics/HubSpot";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd } from "@/lib/seo";
 
@@ -105,6 +106,8 @@ export default function RootLayout({
       <body>
         {/* Google Ads (gtag.js) mit Consent Mode – site-weit */}
         <GoogleAds />
+        {/* HubSpot – lädt erst nach Einwilligung ("Alle akzeptieren") */}
+        <HubSpot />
         {/* Structured Data (Organization + WebSite) site-weit */}
         <JsonLd data={organizationJsonLd} />
         {children}
