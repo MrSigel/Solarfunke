@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cookie } from "lucide-react";
-import { CONSENT_KEY, CONSENT_CHANGED_EVENT, updateAdsConsent } from "@/lib/consent";
+import { CONSENT_KEY, updateAdsConsent } from "@/lib/consent";
 
 /**
  * Cookie-Consent-Banner (dezenter Balken unten, nicht blockierend).
@@ -33,14 +33,8 @@ export function CookieBanner() {
     } catch {
       /* Speicherung nicht möglich – Banner trotzdem schließen. */
     }
-    // Google Ads Consent Mode live nachziehen …
+    // Google Ads Consent Mode live nachziehen.
     updateAdsConsent(choice === "accepted");
-    // … und andere einwilligungsbasierte Dienste (z. B. HubSpot) informieren.
-    try {
-      window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT));
-    } catch {
-      /* ignore */
-    }
     setVisible(false);
   }
 

@@ -1,38 +1,18 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Script from "next/script";
-import { CONSENT_KEY, CONSENT_CHANGED_EVENT } from "@/lib/consent";
 
 /**
  * HubSpot Tracking-/Embed-Code (EU-Region, Portal 149003885).
  *
- * Einwilligungsbasiert: HubSpot setzt Tracking-Cookies und wird daher ERST
- * geladen, wenn im Cookie-Banner „Alle akzeptieren" gewählt wurde (konsistent
- * zur Datenschutzerklärung). Sonst wird der Code nicht eingebunden.
+ * Wird site-weit UNBEDINGT geladen (bewusst vorgesetzt), damit HubSpot von
+ * Anfang an trackt und Besucher/Leads erfasst.
+ *
+ * Hinweis: HubSpot setzt Cookies. Für die DSGVO-Konformität sollte HubSpot in
+ * der Datenschutzerklärung als eingesetzter Dienst genannt werden; die
+ * Consent-Steuerung erfolgt hier bewusst NICHT über den Seiten-Cookie-Banner.
  */
 const HUBSPOT_ID = "149003885";
 
 export function HubSpot() {
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    const check = () => {
-      try {
-        if (window.localStorage.getItem(CONSENT_KEY) === "accepted") {
-          setEnabled(true);
-        }
-      } catch {
-        /* ignore */
-      }
-    };
-    check(); // bereits erteilte Einwilligung berücksichtigen
-    window.addEventListener(CONSENT_CHANGED_EVENT, check);
-    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, check);
-  }, []);
-
-  if (!enabled) return null;
-
   return (
     <Script
       id="hs-script-loader"

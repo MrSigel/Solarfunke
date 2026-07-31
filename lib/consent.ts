@@ -7,20 +7,6 @@ export const GADS_ID = "AW-18143565684";
 /** localStorage-Key des Cookie-Banners ("accepted" | "necessary"). */
 export const CONSENT_KEY = "solarfunke-cookie-consent";
 
-/** Event, das der Cookie-Banner bei einer Entscheidung auslöst. */
-export const CONSENT_CHANGED_EVENT = "solarfunke-consent-changed";
-
-/** Liefert die gespeicherte Cookie-Entscheidung (oder null, wenn noch offen). */
-export function getStoredConsent(): "accepted" | "necessary" | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const v = window.localStorage.getItem(CONSENT_KEY);
-    return v === "accepted" || v === "necessary" ? v : null;
-  } catch {
-    return null;
-  }
-}
-
 /** Google-Ads Conversion für abgeschickte Kontakt-/Lead-Anfragen. */
 export const CONVERSION_KONTAKT = "ads_conversion_Kontakt_1";
 
